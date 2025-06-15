@@ -1,8 +1,7 @@
 import { Request, Response } from "express"
 import { inject, injectable } from "inversify"
 
-import { ok } from "@/helpers/utils"
-
+import { ok } from "../../helpers/utils"
 import { EmbeddingService } from "./embedding.service"
 
 @injectable()

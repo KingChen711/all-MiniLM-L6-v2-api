@@ -1,9 +1,8 @@
 import express from "express"
 
-import { container } from "@/config/inversify.config"
-import { checkAPIKey } from "@/middleware/check-api-key.middleware"
-import { validateRequestData } from "@/middleware/validate-request-data.middleware"
-
+import { container } from "../../config/inversify.config"
+import { checkAPIKey } from "../../middleware/check-api-key.middleware"
+import { validateRequestData } from "../../middleware/validate-request-data.middleware"
 import { EmbeddingController } from "./embedding.controller"
 import { extractSchema } from "./embedding.validation"
 

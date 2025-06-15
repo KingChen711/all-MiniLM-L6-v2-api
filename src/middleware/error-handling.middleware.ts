@@ -1,10 +1,10 @@
 import { type NextFunction, type Request, type Response } from "express"
 import { StatusCodes } from "http-status-codes"
 
-import type ApiError from "@/helpers/api-error"
+import type ApiError from "../helpers/api-error"
 import RequestValidationException, {
   type ValidationErrors,
-} from "@/helpers/errors/request-validation.exception"
+} from "../helpers/errors/request-validation.exception"
 
 const errorHandlingMiddleware = (
   err: ApiError,

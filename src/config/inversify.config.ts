@@ -1,7 +1,7 @@
 import { Container } from "inversify"
 
-import { EmbeddingController } from "@/modules/embedding/embedding.controller"
-import { EmbeddingService } from "@/modules/embedding/embedding.service"
+import { EmbeddingController } from "../modules/embedding/embedding.controller"
+import { EmbeddingService } from "../modules/embedding/embedding.service"
 
 const container = new Container()
 

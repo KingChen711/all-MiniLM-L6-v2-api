@@ -18,7 +18,13 @@
     "typescript": "^5.4.5",
     "ts-node": "^10.9.2",
     "tsconfig-paths": "^4.2.0",
-    "typescript-eslint": "^8.20.0"
+    "typescript-eslint": "^8.20.0",
+    "@ianvs/prettier-plugin-sort-imports": "^4.4.2",
+    "@trivago/prettier-plugin-sort-imports": "^4.3.0",
+    "@types/body-parser": "^1.19.5",
+    "@types/express": "^4.17.21",
+    "@types/inversify": "^2.0.33",
+    "@types/morgan": "^1.9.9"
   },
   "scripts": {
     "dev": "nodemon src/index.ts",
@@ -29,33 +35,12 @@
     "lint:fix": "eslint . --fix",
     "prettier": "prettier --check .",
     "prettier:fix": "prettier --write .",
-    "postinstall": "prisma generate",
-    "vercel-build": "prisma generate"
-  },
-  "prisma": {
-    "seed": "ts-node prisma/seed.ts"
+    "vercel-build": "echo hello"
   },
   "dependencies": {
-    "@aws-sdk/client-s3": "^3.583.0",
-    "@aws-sdk/s3-request-presigner": "^3.583.0",
-    "@clerk/clerk-sdk-node": "^5.0.8",
     "@huggingface/transformers": "^3.5.2",
-    "@ianvs/prettier-plugin-sort-imports": "^4.4.2",
-    "@prisma/client": "^5.15.0",
-    "@trivago/prettier-plugin-sort-imports": "^4.3.0",
-    "@types/body-parser": "^1.19.5",
-    "@types/cors": "^2.8.17",
-    "@types/express": "^4.17.21",
-    "@types/inversify": "^2.0.33",
-    "@types/mime-types": "^2.1.4",
-    "@types/morgan": "^1.9.9",
-    "@types/multer": "^1.4.11",
-    "@types/node-schedule": "^2.1.7",
-    "@types/nodemailer": "^6.4.15",
     "body-parser": "^1.20.2",
     "class-transformer": "^0.5.1",
-    "cors": "^2.8.5",
-    "date-fns": "^3.6.0",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
     "express-async-errors": "^3.1.1",
@@ -63,16 +48,9 @@
     "http-status-codes": "^2.3.0",
     "inversify": "^6.0.2",
     "inversify-inject-decorators": "^3.1.0",
-    "mime-types": "^2.1.35",
     "morgan": "^1.10.0",
-    "multer": "^1.4.5-lts.1",
-    "node-schedule": "^2.1.1",
-    "nodemailer": "^6.9.13",
-    "prisma": "^5.15.0",
     "reflect-metadata": "^0.2.2",
     "rimraf": "^5.0.7",
-    "sharp": "^0.33.4",
-    "svix": "^1.24.0",
     "zod": "^3.23.8"
   }
 }

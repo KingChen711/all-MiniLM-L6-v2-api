@@ -1,4 +1,4 @@
-import UnauthorizedException from "@/helpers/errors/unauthorized-exception"
+import UnauthorizedException from "../helpers/errors/unauthorized-exception"
 
 import "dotenv/config"
 

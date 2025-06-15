@@ -1,8 +1,8 @@
 import { type NextFunction, type Request, type Response } from "express"
 import { type AnyZodObject } from "zod"
 
-import RequestValidationException from "@/helpers/errors/request-validation.exception"
-import { isZodError } from "@/helpers/utils"
+import RequestValidationException from "../helpers/errors/request-validation.exception"
+import { isZodError } from "../helpers/utils"
 
 const validateRequestData =
   (schema: AnyZodObject) =>
