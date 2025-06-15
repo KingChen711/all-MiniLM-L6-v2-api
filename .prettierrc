@@ -1,0 +1,22 @@
+{
+  "plugins": ["@ianvs/prettier-plugin-sort-imports"],
+  "endOfLine": "lf",
+  "semi": false,
+  "singleQuote": false,
+  "tabWidth": 2,
+  "trailingComma": "es5",
+  "importOrder": [
+    "^@nestjs/(.*)$",
+    "^@nestjs$",
+    "<THIRD_PARTY_MODULES>",
+    "",
+    "^src/(.*)$",
+    "^src$",
+    "",
+    "^@/(.*)$",
+    "^@$",
+    "",
+    "^[./]"
+  ],
+  "importOrderParserPlugins": ["typescript", "jsx", "decorators-legacy"]
+}
