@@ -29,7 +29,9 @@ export class EmbeddingService {
 
   async getExtractor(): Promise<FeatureExtractionPipeline> {
     if (this.extractor === null) {
-      env.localModelPath = "../../Xenova/all-MiniLM-L6-v2"
+      env.allowRemoteModels = false
+      env.allowLocalModels = true
+      env.localModelPath = process.cwd() + "/models"
 
       //@ts-ignore
       this.extractor = await pipeline(this.task, this.model)
@@ -40,7 +42,9 @@ export class EmbeddingService {
 
   async getTokenizer(): Promise<PreTrainedTokenizer> {
     if (this.tokenizer === null) {
-      env.localModelPath = "../../Xenova/all-MiniLM-L6-v2"
+      env.allowRemoteModels = false
+      env.allowLocalModels = true
+      env.localModelPath = process.cwd() + "/models"
       this.tokenizer = await AutoTokenizer.from_pretrained(this.model)
     }
 

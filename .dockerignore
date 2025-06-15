@@ -1,0 +1,29 @@
+# node_modules sẽ được cài lại bên trong Docker, không cần copy
+node_modules
+npm-debug.log
+yarn-error.log
+
+# Bỏ thư mục build cũ (nếu có)
+dist
+
+# Git
+.git
+.gitignore
+
+# OS/File system
+.DS_Store
+*.swp
+*.lock
+
+# IDE
+.vscode
+.idea
+
+# Docker
+Dockerfile
+.dockerignore
+
+# Test files (tuỳ bạn)
+__tests__/
+coverage/
+*.spec.ts

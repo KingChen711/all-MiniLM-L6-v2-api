@@ -5,7 +5,7 @@ import { EmbeddingService } from "../modules/embedding/embedding.service"
 
 const container = new Container()
 
-container.bind(EmbeddingService).toSelf().inRequestScope()
-container.bind(EmbeddingController).toSelf().inRequestScope()
+container.bind(EmbeddingService).toSelf().inSingletonScope()
+container.bind(EmbeddingController).toSelf().inSingletonScope()
 
 export { container }
