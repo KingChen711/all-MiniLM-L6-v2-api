@@ -2,7 +2,7 @@ import { z } from "zod"
 
 export const extractSchema = z.object({
   body: z.object({
-    text: z.string().trim(),
+    texts: z.array(z.string().trim()),
   }),
 })
 

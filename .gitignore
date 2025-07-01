@@ -175,3 +175,7 @@ dist
 .DS_Store
 
 build
+
+.amplify-hosting
+dist
+node_modules

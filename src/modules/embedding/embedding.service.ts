@@ -7,6 +7,7 @@ import {
 } from "@huggingface/transformers"
 import { injectable } from "inversify"
 
+import { asyncPoolAll } from "../../helpers/utils"
 import { TExtractSchema } from "./embedding.validation"
 
 type Chunk = {
@@ -22,8 +23,8 @@ type ChunkWithVector = Chunk & {
 export class EmbeddingService {
   private extractor: FeatureExtractionPipeline | null = null
   private tokenizer: PreTrainedTokenizer | null = null
-  private readonly maxTokens = 250 as const
-  private readonly overlap = 50 as const
+  private readonly maxTokens = Number(process.env.MAX_TOKENS!)
+  private readonly overlap = Number(process.env.OVERLAP!)
   private readonly task = "feature-extraction" as const
   private readonly model = "Xenova/all-MiniLM-L6-v2" as const
 
@@ -51,13 +52,26 @@ export class EmbeddingService {
     return this.tokenizer
   }
 
-  async extract(dto: TExtractSchema): Promise<ChunkWithVector[]> {
+  public async extractTexts(dto: TExtractSchema): Promise<ChunkWithVector[][]> {
+    const results = await asyncPoolAll<string, ChunkWithVector[]>(
+      Number(process.env.CONCURRENCY_EXTRACT_TEXTS!),
+      dto.body.texts,
+      async (text) => {
+        const chunks = await this.extract(text)
+        return chunks
+      }
+    )
+
+    return results
+  }
+  private async extract(text: string): Promise<ChunkWithVector[]> {
     const extractor = await this.getExtractor()
+    const chunks = await this.chunkText(text)
 
-    const chunks = await this.chunkText(dto.body.text)
-
-    return await Promise.all(
-      chunks.map(async (c) => {
+    const results = await asyncPoolAll<Chunk, Chunk & { vector: number[] }>(
+      Number(process.env.CONCURRENCY_EXTRACT_TEXT!),
+      chunks,
+      async (c) => {
         const output = await extractor(c.text, {
           pooling: "mean",
           normalize: true,
@@ -66,8 +80,10 @@ export class EmbeddingService {
           ...c,
           vector: Array.from(output.data) as number[],
         }
-      })
+      }
     )
+
+    return results
   }
 
   private async chunkText(rawText: string): Promise<Chunk[]> {

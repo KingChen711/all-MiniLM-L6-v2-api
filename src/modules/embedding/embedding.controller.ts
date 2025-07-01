@@ -12,7 +12,9 @@ export class EmbeddingController {
   ) {}
 
   public extract = async (req: Request, res: Response) => {
-    const users = await this.embeddingService.extract(res.locals.requestData)
+    const users = await this.embeddingService.extractTexts(
+      res.locals.requestData
+    )
     return ok(res, users)
   }
 }
